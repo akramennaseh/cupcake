@@ -1,0 +1,42 @@
+//
+// overlay.scss
+// Theme utility
+//
+
+.overlay {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    border-radius: inherit;
+  }
+}
+
+
+// Colors
+
+.overlay-black {
+  @include overlay($black);
+}
+
+.overlay-white {
+  @include overlay($white);
+}
+
+.overlay-primary {
+  @include overlay($primary);
+}
+
+
+// Opacity
+
+@for $i from 1 through 9 {
+  .overlay-#{$i * 10} {
+
+    &::before {
+      opacity: #{$i / 10};
+    }
+  }
+}

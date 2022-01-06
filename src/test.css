@@ -1,0 +1,7 @@
+#ramenna {
+    background-image: url('images/background.jpg');
+    width: 80%;
+    height: 200px;
+    background-size: cover;
+    color: white;
+}

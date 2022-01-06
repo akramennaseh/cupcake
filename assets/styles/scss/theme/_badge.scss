@@ -1,0 +1,46 @@
+//
+// badge.scss
+// Extended from Bootstrap
+//
+
+
+// Soft variants
+
+@each $color, $value in $theme-colors {
+  .badge-#{$color}-soft {
+    @include badge-variant-soft(rgba($value, $badge-soft-bg-opacity), $value);
+  }
+}
+
+.badge-gray-700-soft {
+  @include badge-variant-soft(rgba($gray-700, $badge-soft-bg-opacity), $gray-700);
+}
+
+
+// Sizing
+
+.badge-lg {
+  padding: $badge-padding-y-lg $badge-padding-x-lg;
+}
+
+
+// Rounded circle
+
+.badge-rounded-circle {
+  height: calc(1em + #{$badge-padding-y * 2});
+  padding-left: $badge-padding-y;
+  padding-right: $badge-padding-y;
+  border-radius: $badge-pill-border-radius;
+
+  > * {
+    display: block;
+    width: 1em;
+  }
+
+
+  &.badge-lg {
+    height: calc(1em + #{$badge-padding-y-lg * 2});
+    padding-left: $badge-padding-y-lg;
+    padding-right: $badge-padding-y-lg;
+  }
+}

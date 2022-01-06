@@ -1,0 +1,11 @@
+//
+// overlay.scss
+// Theme mixin
+//
+
+@mixin overlay($color) {
+  
+  &::before {
+    background-color: $color;
+  }
+}

@@ -1,0 +1,81 @@
+//
+// card.scss
+// Extended from Bootstrap
+//
+
+.card {
+  width: 100%; // IE fix
+}
+
+
+// Image top
+
+.card-img-top {
+  min-height: 1px; // IE fix
+}
+
+
+// Body
+
+.card-body {
+  min-height: 1px; // IE fix
+}
+
+
+// Card button
+
+.card-btn {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+
+// Card border
+
+.card-border {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0; right: 0; left: 0;
+    border-top-width: $border-width * 2;
+    border-bottom-width: calc(#{$card-border-radius} - #{$border-width * 2});
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-top-color: inherit;
+    border-bottom-color: transparent;
+    border-top-left-radius: $card-border-radius;
+    border-top-right-radius: $card-border-radius;
+  }
+}
+
+.card-border-lg {
+
+  &::after {
+    border-top-width: $border-width * 3;
+    border-bottom-width: calc(#{$card-border-radius} - #{$border-width * 3});
+  }
+}
+
+.card-border-xl {
+
+  &::after {
+    border-top-width: $border-width * 4;
+    border-bottom-width: calc(#{$card-border-radius} - #{$border-width * 3});
+  }
+}
+
+
+// Card group
+
+.card-group {
+
+  @include media-breakpoint-only(sm) {
+    flex-direction: column !important;
+
+    > .card {
+      flex: auto;
+    }
+  }
+}

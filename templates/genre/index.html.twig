@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LivreController!{% endblock %}
+
+{% block body %}
+<div class="col d-flex justify-content-center"style="margin-left:45px;width:auto">
+
+{% for genre in genres %}
+
+<div class="card mb-3"  >
+  <img src="https://picsum.photos/720/200" class="card-img-top" alt="...">
+  <div class="card-body" >
+    <h5 class="card-title">Genre :{{genre.Nom}}</h5>
+    <p class="card-text">Id:{{genre.Id}}</p>
+    <a href="#" class="btn btn-primary">More ...</a>
+  </div>
+{% endfor %}
+</div>
+<div class ="d-flex justify-content-center">
+      {% do genres.setPageRange(2) %}
+      {{ knp_pagination_render(genres, 'base/pagination.html.twig') }}
+</div>
+
+{% endblock %}

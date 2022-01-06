@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+
+
+
+
+{% block body %}
+<div class="col d-flex justify-content-center">
+
+<h1>Lastest added books</h1>
+</div>
+<div class="col d-flex justify-content-center"style="margin-left:45px;width:auto">
+
+{% for livre in livres %}
+
+<div class="card mb-3"  >
+  <img src="https://picsum.photos/720/200" class="card-img-top" alt="...">
+  <div class="card-body" >
+    <h5 class="card-title">{{livre.titre}}</h5>
+    <p class="card-text">note {{livre.note}}/20</p>
+    <p class="card-text"><small class="text-muted">{{livre.DateDeParution|date('d/m/Y')}}</small></p>
+    <a href="{{ path('livre_details', {'id': livre.Id}) }}" class="btn btn-primary">More ...</a>
+  </div>
+
+{% endfor %}
+
+</div>
+
+
+</div>
+{% endblock %}

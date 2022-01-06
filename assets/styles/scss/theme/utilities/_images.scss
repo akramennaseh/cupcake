@@ -1,0 +1,34 @@
+//
+// images.scss
+// Extended from Bootstrap
+//
+
+//
+// Skewed
+//
+
+.img-skewed {
+  perspective: 1500px;
+}
+
+// Left
+
+.img-skewed-left {
+  perspective-origin: left center;
+
+  .img-skewed-item {
+    transform: rotateY(-$img-skewed-rotate-y) rotateX($img-skewed-rotate-x);
+    backface-visibility: hidden;
+  }
+}
+
+// Right
+
+.img-skewed-right {
+  perspective-origin: right center;
+
+  .img-skewed-item {
+    transform: rotateY($img-skewed-rotate-y) rotateX($img-skewed-rotate-x);
+    backface-visibility: hidden;
+  }
+}

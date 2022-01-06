@@ -1,0 +1,9 @@
+//
+// badge.scss
+// Extended from Bootstrap
+//
+
+@mixin badge-variant-soft($bg, $color) {
+  background-color: $bg;
+  color: $color;
+}

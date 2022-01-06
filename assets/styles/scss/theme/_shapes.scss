@@ -1,0 +1,141 @@
+//
+// shapes.scss
+// Theme component
+//
+
+.shape {
+  position: absolute;
+}
+
+.shape > svg,
+.shape > img {
+  display: block;
+}
+
+.shape:not([class*="blur"]) {
+  overflow: hidden;
+ 
+  // Removes subpixel rendering errors for Safari when used with the .75px solution below
+  > svg, > img {
+    transform: scale(1.001);
+  }
+}
+
+
+// Hide SVG images in IE
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+
+  .shape > svg {
+    display: none;
+  }
+}
+
+
+// Positioning
+// The .75px + transform origin removes all subpixel rendering errors for all supported browsers 
+
+.shape-top {
+  top: -.75px; right: -.75px; left: -.75px;
+  
+  > svg, > img {
+    transform-origin: top center;
+  }
+}
+
+.shape-right {
+  top: -.75px; right: -.75px; bottom: -.75px;
+
+  > svg, > img {
+    transform-origin: right center;
+    margin-left: auto;
+  }
+}
+
+.shape-bottom {
+  right: -.75px; bottom: -.75px; left: -.75px;
+  
+  > svg, > img {
+    transform-origin: bottom center;
+  }
+}
+
+.shape-left {
+  top: -.75px; bottom: -.75px; left: -.75px;
+  
+  > svg, > img {
+    transform-origin: left center;
+  }
+}
+
+
+// Direction
+// The extra 1.5px width compensates for the .75px adjustments in positioning
+
+.shape-fluid-x > svg,
+.shape-fluid-x > img {
+  width: calc(100% + 1.5px); height: auto;
+}
+
+.shape-fluid-y > svg,
+.shape-fluid-y > img {
+  height: calc(100% + 1.5px); width: auto;
+}
+
+// Forces vertical shapes to scale to full width of parent so overflow doesn't cut it off, but pointer events go right through, so there are no side effects
+.shape-fluid-y {
+  width: 100%;
+  pointer-events: none;
+}
+
+// Flip
+
+.shape-flip-x {
+  transform: scaleX(-1);
+  backface-visibility: hidden;
+}
+
+
+// Blurs
+
+.shape-blur-1 {
+  top: 0; right: 0; left: 0;
+
+  > svg, > img {
+    width: 100%; height: auto;
+  }
+
+  @include media-breakpoint-up(md) {
+   bottom: 0; left: 50%; right: auto;
+
+    > svg, > img {
+      width: auto; height: 100%;
+    }
+  }
+}
+
+.shape-blur-2 {
+  top: 0; right: 0; left: 0;
+
+  > svg, > img {
+    width: 100%; height: auto;
+  }
+
+  @include media-breakpoint-up(md) {
+    bottom: 0; right: 50%; left: auto;
+
+    > svg, > img {
+      width: auto; height: 100%;
+      float: right;
+    }
+  }
+}
+
+.shape-blur-4 {
+  top: 0; bottom: 0; left: 50%;
+
+  > svg, > img {
+    width: auto; height: 100%;
+    transform: translateX(-50%) scale(1.3);
+  }
+}

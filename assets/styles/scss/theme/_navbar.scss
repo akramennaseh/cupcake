@@ -1,0 +1,234 @@
+//
+// navbar.scss
+// Extended from Bootstrap
+//
+
+.navbar {
+  transition: $transition-base;
+  transition-property: background-color, color, transform;
+  z-index: $zindex-fixed;
+  perspective: 2000px;
+}
+
+
+// Dark version
+
+.navbar-dark {
+
+  @include media-breakpoint-down(md) {
+    
+    .navbar-nav .nav-item .nav-link {
+      color: $navbar-light-color;
+
+      &:hover, &:focus {
+        color: $navbar-light-hover-color;
+      }
+    }
+
+    .navbar-nav .nav-item.active .nav-link,
+    .navbar-nav .nav-item .nav-link.active {
+      color: $navbar-light-active-color;
+    }
+
+    .navbar-collapse .navbar-toggler {
+      color: $navbar-light-color;
+    }
+  }
+}
+
+
+// Contaner
+
+.navbar > .container {
+  padding-left: 0;
+  padding-right: 0;
+
+  @include media-breakpoint-up(xl) {
+    padding-left: $grid-gutter-width / 2;
+    padding-right: $grid-gutter-width / 2;
+  }
+}
+
+
+// Brand
+
+.navbar-brand {
+  font-weight: $navbar-brand-font-weight;
+}
+
+.navbar-brand-img {
+  max-height: $navbar-brand-height;
+  width: auto;
+}
+
+.navbar-dark .navbar-brand {
+  filter: brightness(0) invert(1);
+}
+
+
+// Button
+
+.navbar-btn {
+
+  @include media-breakpoint-down(md) {
+    width: 100%;
+    padding: $btn-padding-y $btn-padding-x;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    font-size: $btn-font-size;
+  }
+}
+
+
+// Navigation
+
+.navbar-nav .nav-link {
+  font-weight: $navbar-nav-link-font-weight;
+
+  @include hover-focus {
+    outline: none;
+  }
+}
+
+
+// Boxed layout
+
+.navbar-dark > .container {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0; bottom: -$navbar-padding-y; left: 0;
+    border-top: $border-width solid fade-out($white, .8);
+  }
+}
+
+
+// Collapse
+
+@include media-breakpoint-down(md) {
+
+  .navbar-collapse {
+    position: fixed;
+    top: $spacer; right: $spacer; left: $spacer;
+    height: auto !important;
+    max-height: calc(100vh - #{$spacer * 2});
+    background-color: $dropdown-bg;
+    border-radius: $dropdown-border-radius;
+    box-shadow: $box-shadow-dark-lg;
+    overflow-y: scroll; // This has to be scroll for iOS bounce scroll
+    -webkit-overflow-scrolling: touch;
+  }
+
+  // Animation
+
+  .navbar-collapse {
+    transition: $transition-base;
+    transition-property: opacity, transform, -webkit-transform;
+    transform-origin: top right;
+  }
+
+  .navbar-collapse.show {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .navbar-collapse.collapsing {
+    opacity: 0;
+    transform: scale(.9); 
+  }
+  
+}
+
+
+// Toggler
+
+.navbar-collapse .navbar-toggler {
+  position: absolute;
+  top: $spacer; right: $spacer;
+  z-index: 1;
+
+  @include media-breakpoint-up(lg) {
+    display: none;
+  }
+}
+
+
+// Navigation
+
+.navbar-nav .nav-item {
+
+  @include media-breakpoint-down(md) {
+    padding: $navbar-nav-item-spacing;
+
+    + .nav-item {
+      border-top: $border-width solid $gray-200;
+    }
+  }
+}
+
+.navbar-nav .nav-link {
+
+  @include media-breakpoint-down(md) {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+
+// Dropdown
+
+.navbar-nav .dropdown-menu {
+  display: block !important;
+  min-width: 0;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  box-shadow: none;
+
+  @include media-breakpoint-up(lg) {
+    left: 50%;
+    min-width: $navbar-dropdown-min-width;
+    padding: $navbar-dropdown-spacing;
+    box-shadow: $box-shadow-dark-lg;
+    visibility: hidden;
+    opacity: 0;
+    transform: translate3d(-50%, 10px, 0);
+    transition: $transition-base;
+    transition-property: opacity, visibility, transform, -webkit-transform;
+    transform-origin: top center;
+
+    &.dropdown-menu-lg {
+      min-width: $navbar-dropdown-min-width-lg;
+    }
+  }
+}
+
+.navbar-nav .dropdown-toggle {
+
+  &::after {
+    display: none;
+  }
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: $navbar-dropdown-toggle-margin-bottom;
+    pointer-events: none;
+  }
+}
+
+
+// Toggle dropdown on hover
+
+@include media-breakpoint-up(lg) {
+  
+  .navbar-nav .dropdown .dropdown-menu {
+    z-index: $zindex-fixed;
+  }
+
+  .navbar-nav .dropdown:hover .dropdown-menu {
+    opacity: 1;
+    transform: translate3d(-50%, 0, 0);
+    visibility: visible;
+  }
+}

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LivreController!{% endblock %}
+
+{% block body %}
+<div class="card mb-3">
+  <img src="https://picsum.photos/720/200" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title"> {{auteur.NomPrenom}}</h5>
+    <p class="card-text"> Nationalite :{{auteur.nationalite}}</p>
+    
+    <p class="card-text">date de naissance: {{auteur.DateDeNaissance}}</p>
+   
+  </div>
+</div>
+
+{% endblock %}
