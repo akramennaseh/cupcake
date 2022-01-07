@@ -24,15 +24,15 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Bookstore');
+            ->setTitle('<img src="http://lums.ma/wp-content/uploads/2022/01/bookstore-logos_black.png" height="150">');
     }
 
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Livres', 'fas fa-book', Livre::class);
-        yield MenuItem::linkToCrud('Auteurs', 'fas fa-book', Auteur::class);
-        yield MenuItem::linkToCrud('Genres', 'fas fa-book', Genre::class);
+        yield MenuItem::linkToCrud('Auteurs', 'fas fa-pencil-alt', Auteur::class);
+        yield MenuItem::linkToCrud('Genres', 'fab fa-audible', Genre::class);
    
     }
 }
